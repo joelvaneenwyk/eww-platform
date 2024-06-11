@@ -1,35 +1,51 @@
 # Changelog
 
+<!--
+^##[ ]+(Unreleased|[\[]{0,1}(\d.\d.\d)[\]]{0,1}[ ]+\((\d+\.\d+\.\d+)\))
+([\?\[\]\/><=a-zA-Z %_\d\-\r\n,{}():`'\.]+)### (.*)$
+-->
+
+<!--
+## $1
+$4### $5 ($1)
+-->
+
 All notable changes to eww will be listed here, starting at changes since version 0.2.0.
 
 ## Unreleased
 
 ### Fixes
+
 - Fix and refactor nix flake (By: w-lfchen)
 - Fix remove items from systray (By: vnva)
 
 ### Features
+
 - Add `:truncate` property to labels, disabled by default (except in cases where truncation would be enabled in version `0.5.0` and before) (By: Rayzeq).
 - Add support for `:hover` css selectors for tray items (By: zeapoz)
 
 ## [0.6.0] (21.04.2024)
 
 ### Fixes
+
 - The `shell-completions` subcommand is now run before anything is set up
 - Fix nix flake
 - Fix `jq` (By: w-lfchen)
 - Labels now use gtk's truncation system (By: Rayzeq).
 
 ### Features
+
 - Add `systray` widget (By: ralismark)
 - Add `:checked` property to checkbox (By: levnikmyskin)
 
 ## [0.5.0] (17.02.2024)
 
 ### BREAKING CHANGES
+
 - Remove `eww windows` command, replace with `eww active-windows` and `eww list-windows`
 
 ### Features
+
 - Add `:icon` and `:icon-size` to the image widget (By: Adrian Perez de Castro)
 - Add `get_env` function (By: RegenJacob)
 - Add `:namespace` window option
@@ -56,20 +72,24 @@ All notable changes to eww will be listed here, starting at changes since versio
 - Add `eww shell-completions` command, generating completion scripts for different shells
 
 ### Fixes
+
 - Fix wrong values in `EWW_NET`
 - Fix logfiles growing indefinitely
 
 ## [0.4.0] (04.09.2022)
 
 ### BREAKING CHANGES
+
 - Change `calendar`-widget to index months starting at 1 rather than indexed from 0
 
 ### Features
+
 - Add support for output names in X11 to select `:monitor`.
 - Add support for `:active`-pseudoselector on eventbox (By: viandoxdev)
 - Add support for `:password` on input (By: viandoxdev)
 
 ### Notable fixes and other changes
+
 - Scale now only runs the onchange command on changes caused by user-interaction
 - Improve CSS error reporting
 - Fix deflisten scripts not always getting cleaned up properly
@@ -77,10 +97,10 @@ All notable changes to eww will be listed here, starting at changes since versio
 - Fix cirular-progress not properly displaying 100% values when clockwise is false
 - Fix temperatures inside `EWW_TEMPS` not being accessible if at least one value is `NaN`
 
-
 ## 0.3.0 (26.05.2022)
 
 ### BREAKING CHANGES
+
 - Change the onclick command API to support multiple placeholders.
   This changes. the behaviour of the calendar widget's onclick as well as the onhover and onhoverlost
   events. Instead of providing the entire date (or, respecively, the x and y mouse coordinates) in
@@ -89,6 +109,7 @@ All notable changes to eww will be listed here, starting at changes since versio
   similarly x and y are accessed with `{0}` and `{1}`.
 
 ### Features
+
 - Add `eww inspector` command
 - Add `--no-daemonize` flag
 - Add support for displaying marks on `scale`-widget (By: druskus20)
@@ -112,9 +133,11 @@ All notable changes to eww will be listed here, starting at changes since versio
 - Add arguments option to `defwindow` (By: WilfSilver)
 
 ### Notable Internal changes
+
 - Rework state management completely, now making local state and dynamic widget hierarchy changes possible.
 
 ### Notable fixes and other changes
+
 - Fix `onscroll` gtk-bug where the first event is emitted incorrectly (By: druskus20)
 - Allow windows to get moved when windowtype is `normal`
 - Added more examples

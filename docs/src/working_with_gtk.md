@@ -5,7 +5,7 @@
 Eww is styled in GTK CSS.
 You can use `Vanilla CSS` or `SCSS` to make theming even easier. The latter is compiled into CSS for you.
 If you don't know any way to style something check out the [GTK CSS Overview wiki](https://docs.gtk.org/gtk3/css-overview.html),
-the [GTK CSS Properties Overview wiki ](https://docs.gtk.org/gtk3/css-properties.html),
+the [GTK CSS Properties Overview wiki](https://docs.gtk.org/gtk3/css-properties.html),
 or use the [GTK-Debugger](#gtk-debugger).
 
 If you have **NO** clue about how to do CSS, check out some online guides or tutorials.

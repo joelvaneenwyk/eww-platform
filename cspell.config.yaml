@@ -1,0 +1,11 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions:
+  - name: cspell-eww
+    path: ./.config/cspell-eww.txt
+    addWords: true
+dictionaries:
+  - cspell-eww
+words: []
+ignoreWords: []
+import: []

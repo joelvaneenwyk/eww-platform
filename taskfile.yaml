@@ -1,0 +1,46 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  MSG_REPO_READY: 'Repository \`eww-platform\` is setup and ready for development.'
+
+tasks:
+  default:
+    deps: [build]
+
+  setup:
+    cmds:
+      - cmd: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            libgtk-3-dev libgtk-layer-shell-dev libdbusmenu-gtk3-dev
+        platforms: [linux]
+      - cmd: echo "{{.MSG_REPO_READY}}"
+
+  config:
+    cmds:
+      - cmd: mkdir -p ~/.config/eww
+      - cmd: touch ~/.config/eww/eww.yuck
+        ignore_error: true
+      - cmd: touch ~/.config/eww/eww.scss
+        ignore_error: true
+      - cmd: cp -r examples/eww-bar/* ~/.config/eww
+        ignore_error: true
+        silent: true
+
+  run:
+    deps: [build]
+    cmds:
+      - cmd: cargo run open bar
+
+  build:
+    deps: [config]
+    cmds:
+      #
+      # We intentionally do *not* call `cargo update` since 'dbusmenu-glib' has an issue which makes
+      # it not compile with newer version of 'glib'. See here for more details:
+      #
+      #   - https://github.com/elkowar/eww/issues/1062#issuecomment-2036488934
+      #
+      - cmd: cargo build --release --no-default-features --features=wayland

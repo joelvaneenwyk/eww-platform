@@ -20,38 +20,39 @@ as well as within strings, inside string-interpolation blocks (`"foo ${ ... } ba
 ## Features
 
 Supported currently are the following features:
+
 - simple mathematical operations (`+`, `-`, `*`, `/`, `%`)
 - comparisons (`==`, `!=`, `>`, `<`, `<=`, `>=`)
 - boolean operations (`||`, `&&`, `!`)
 - regex match operator (`=~`)
 - elvis operator (`?:`)
-    - if the left side is `""` or a JSON `null`, then returns the right side,
+  - if the left side is `""` or a JSON `null`, then returns the right side,
       otherwise evaluates to the left side.
 - Safe Access operator (`?.`) or (`?.[index]`)
-    - if the left side is `""` or a JSON `null`, then return `null`. Otherwise,
+  - if the left side is `""` or a JSON `null`, then return `null`. Otherwise,
       attempt to index.
-    - This can still cause an error to occur if the left hand side exists but is
+  - This can still cause an error to occur if the left hand side exists but is
       not an object.
       (`Number` or `String`).
 - conditionals (`condition ? 'value' : 'other value'`)
 - numbers, strings, booleans and variable references (`12`, `'hi'`, `true`, `some_variable`)
 - json access (`object.field`, `array[12]`, `object["field"]`)
-    - for this, the object/array value needs to refer to a variable that contains a valid json string.
+  - for this, the object/array value needs to refer to a variable that contains a valid json string.
 - some function calls:
-    - `round(number, decimal_digits)`: Round a number to the given amount of decimals
-    - `sin(number)`, `cos(number)`, `tan(number)`, `cot(number)`: Calculate the trigonometric value of a given number in **radians**
-    - `degtorad(number)`: Converts a number from degrees to radians
-    - `radtodeg(number)`: Converts a number from radians to degrees
-    - `replace(string, regex, replacement)`: Replace matches of a given regex in a string
-	- `search(string, regex)`: Search for a given regex in a string (returns array)
-	- `matches(string, regex)`: check if a given string matches a given regex (returns bool)
-	- `captures(string, regex)`: Get the captures of a given regex in a string (returns array)
-	- `strlength(value)`: Gets the length of the string
-    - `substring(string, start, length)`: Return a substring of given length starting at the given index
-	- `arraylength(value)`: Gets the length of the array
-	- `objectlength(value)`: Gets the amount of entries in the object
-	- `jq(value, jq_filter_string)`: run a [jq](https://stedolan.github.io/jq/manual/) style command on a json value. (Uses [jaq](https://crates.io/crates/jaq) internally).
-  - `get_env(string)`: Gets the specified enviroment variable
+  - `round(number, decimal_digits)`: Round a number to the given amount of decimals
+  - `sin(number)`, `cos(number)`, `tan(number)`, `cot(number)`: Calculate the trigonometric value of a given number in **radians**
+  - `degtorad(number)`: Converts a number from degrees to radians
+  - `radtodeg(number)`: Converts a number from radians to degrees
+  - `replace(string, regex, replacement)`: Replace matches of a given regex in a string
+    - `search(string, regex)`: Search for a given regex in a string (returns array)
+    - `matches(string, regex)`: check if a given string matches a given regex (returns bool)
+    - `captures(string, regex)`: Get the captures of a given regex in a string (returns array)
+    - `strlength(value)`: Gets the length of the string
+  - `substring(string, start, length)`: Return a substring of given length starting at the given index
+    - `arraylength(value)`: Gets the length of the array
+    - `objectlength(value)`: Gets the amount of entries in the object
+    - `jq(value, jq_filter_string)`: run a [jq](https://stedolan.github.io/jq/manual/) style command on a json value. (Uses [jaq](https://crates.io/crates/jaq) internally).
+  - `get_env(string)`: Gets the specified environment variable
   - `formattime(unix_timestamp, format_str, timezone)`: Gets the time in a given format from UNIX timestamp.
      Check [chrono's documentation](https://docs.rs/chrono/latest/chrono/format/strftime/index.html) for more
      information about format string and [chrono-tz's documentation](https://docs.rs/chrono-tz/latest/chrono_tz/enum.Tz.html)

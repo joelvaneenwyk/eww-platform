@@ -53,7 +53,6 @@ You can now open your first window by running `eww open example`! Glorious!
 |  `monitor` | Which monitor this window should be displayed on. See below for details.|
 | `geometry` | Geometry of the window.  |
 
-
 **`monitor`-property**
 
 This field can be:
@@ -62,7 +61,6 @@ This field can be:
 - an integer, declaring the monitor index
 - the name of the monitor
 - a string containing a JSON-array of monitor matchers, such as: `'["<primary>" "HDMI-A-1" "PHL 345B1C" 0]'`. Eww will try to find a match in order, allowing you to specify fallbacks.
-
 
 **`geometry`-properties**
 
@@ -92,8 +90,6 @@ Depending on if you are using X11 or Wayland, some additional properties exist:
 | `exclusive` | Whether the compositor should reserve space for the window automatically. Either `true` or `false`. |
 | `focusable` | Whether the window should be able to be focused. This is necessary for any widgets that use the keyboard to work. Either `true` or `false`. |
 | `namespace` | Set the wayland layersurface namespace eww uses. Accepts a `string` value. |
-
-
 
 ## Your first widget
 
@@ -138,18 +134,21 @@ To then use our widget, we call it just like we would use any other built-in wid
 
 As you may have noticed, we are using a couple predefined widgets here. These are all listed and explained in the [widgets chapter](widgets.md).
 
-
 ### Rendering children in your widgets
+
 As your configuration grows, you might want to improve the structure of your config by factoring out functionality into basic reusable widgets.
 Eww allows you to create custom wrapper widgets that can themselves take children, just like some of the built-in widgets like `box` or `button` can.
 For this, use the `children` placeholder:
+
 ```lisp
 (defwidget labeled-container [name]
   (box :class "container"
     name
     (children)))
 ```
+
 Now you can use this widget as expected:
+
 ```lisp
 (labeled-container :name "foo"
   (button :onclick "notify-send hey ho"
@@ -157,6 +156,7 @@ Now you can use this widget as expected:
 ```
 
 You can also create more complex structure by referring to specific children with the `nth`-attribute:
+
 ```lisp
 (defwidget two-boxes []
   (box
@@ -368,6 +368,7 @@ eww open-many my_primary_bar --arg my_primary_bar:screen=0
 ## Generating a list of widgets from JSON using `for`
 
 If you want to display a list of values, you can use the `for`-Element to fill a container with a list of elements generated from a JSON-array.
+
 ```lisp
 (defvar my-json "[1, 2, 3]")
 
